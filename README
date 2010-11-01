@@ -1,0 +1,26 @@
+== Welcome File Upload Application
+
+This is a Rails 3 Application Which allows you to create /edit/update/delete documents.
+
+
+== Getting Started
+
+1. Download the application from:
+    http://github.com/puneetpandey/file_upload
+
+2. Change the database.yml file.
+
+3. From the command prompt, type:
+    A) rake db:create
+    B) rake db:migrate
+
+4. Open http://localhost:3000/ and enjoy the application.
+
+5. Try login with:
+    A) admin_user1
+    B) admin_user2
+    C) admin_user3
+
+6. Try login with Super Admin
+    Login: super_admin
+

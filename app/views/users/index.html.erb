@@ -1,0 +1,19 @@
+<h2 align="center">Manage Users</h2>
+<p align="center"><%= link_to "New User", new_user_url %></p>
+<table width="95%" align="center">
+  <tr>
+    <th style="background-color: green;" width="20%">User</th>
+    <th style="background-color: green;" width="35%">Email</th>
+    <th style="background-color: green;" width="20%">Actions</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr class="<%= cycle("even", "odd") %>">
+      <td align="center"><%= link_to "#{user.name}", edit_user_path(user) %></td>
+      <td align="center"><%= user.email %></td>
+      <td align="center"><%= link_to "Delete", user, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate(@users) %>

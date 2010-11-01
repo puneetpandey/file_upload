@@ -1,0 +1,34 @@
+<table align="center" width="100%">
+  <tr>
+    <th style="background-color: green;" width="15%">Name</th>
+    <th style="background-color: green;" width="40%">Description</th>
+    <th style="background-color: green;" width="20%">Attachment</th>
+    <th style="background-color: green;" width="10%">Actions</th>
+    <th style="background-color: green;" width="15%">User</th>
+  </tr>
+  <% if @documents.size > 0 %>
+    <% @documents.each do |document| %>
+      <tr class="<%= cycle("even", "odd") %>">
+        <td align="center"><%= document.name %> </td>
+        <td><%= document.description %> </td>
+        <% document.attachments.each do |attachment| %>
+            <td><%= attachment.data_file_name %></td>
+            <td align="center"><%= link_to "Download", download_user_document_attachment_url(@user, document, attachment) %> </td>
+        <% end %>
+        <td align="center">
+          <% if document.user %>
+            <%= document.user.name %>
+          <% else %>
+            <%= "The User is no longer in the System." %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  <% else %>
+      <tr>
+        <td>No Documents have been uploaded by anyone.</td>
+      </tr>
+  <% end %>
+</table>
+
+<%= will_paginate(@documents) %>

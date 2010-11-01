@@ -1,0 +1,36 @@
+<script type="text/javascript">
+  function validate_form(form) { //This is the name of the function
+    if (form.attachment_data.value == "") {
+      //This checks to make sure the field is not empty
+      alert("Attachment Should not be Empty."); //Informs user of empty field
+      return false; //This prevents the form from being submitted
+    }
+    // you may copy the above 5 lines for each form field you wish to validate
+    // Replace the text "FIELD1" with the name you wish to call the field
+  }
+</script>
+
+<%= error_messages_for :document, :attachment %>
+<%= form_tag({:controller => "documents", :action => "create"}, { :multipart => true, :onsubmit => "return validate_form(this)", :method => :post }) do %>
+
+<table align="center">
+  <tr>
+    <td><label for="name">Name:</label></td>
+    <td> <%= text_field :document, :name %> </td>
+  </tr>
+
+  <tr>
+    <td><label for="attachment_data">Attach File:</label></td>
+    <td><%= file_field :attachment, :data %></td>
+  </tr>
+
+  <tr>
+    <td><label for="document_description">Description:</label></td>
+    <td><%= text_area :document, :description, :rows => 7 %></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><%= submit_tag "Upload File", :id => 'document_submit' %></td>
+  </tr>
+</table>
+<% end -%>
